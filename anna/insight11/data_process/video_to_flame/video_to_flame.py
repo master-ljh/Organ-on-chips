@@ -3,8 +3,8 @@ import os
 import shutil
 
 # 设置输入文件夹和输出文件夹的路径
-input_folder = '/home/ljh/v8/yolov8_tracking/datasets/tumor'
-output_folder = '/home/ljh/v8/anna/insight11/output/tumor_images'
+input_folder = '/home/ljh/organ-on-chips/anna/insight11/datasets/videos/gwy'
+output_folder = '/home/ljh/organ-on-chips/anna/insight11/output/gwy'
 
 # 遍历输入文件夹中的所有视频文件
 for file_name in os.listdir(input_folder):

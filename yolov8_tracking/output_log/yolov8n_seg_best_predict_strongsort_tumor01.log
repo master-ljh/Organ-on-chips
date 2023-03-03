@@ -1,0 +1,69 @@
+[34m[1mtrack: [0myolo_weights=[PosixPath('weights/best.pt')], reid_weights=/home/ljh/v8_tracking/Organ-on-chips/yolov8_tracking/weights/osnet_x0_25_msmt17.pt, tracking_method=strongsort, tracking_config=trackers/strongsort/configs/strongsort.yaml, source=datasets/tumor/tumor_01.mp4, imgsz=[640, 640], conf_thres=0.5, iou_thres=0.5, max_det=1000, device=, show_vid=False, save_txt=False, save_conf=False, save_crop=False, save_trajectories=True, save_vid=True, nosave=False, classes=None, agnostic_nms=False, augment=False, visualize=False, update=False, project=runs/track, name=exp, exist_ok=False, line_thickness=2, hide_labels=False, hide_conf=False, hide_class=False, half=False, dnn=False, vid_stride=1, retina_masks=False
+Ultralytics YOLOv8.0.20 🚀 Python-3.8.16 torch-1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 2080 Ti, 11020MiB)
+YOLOv8n-seg summary (fused): 195 layers, 3258454 parameters, 0 gradients, 12.0 GFLOPs
+Traceback (most recent call last):
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7faba1f8cfd0>: Failed to establish a new connection: [Errno 101] Network is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='drive.google.com', port=443): Max retries exceeded with url: /uc?id=1Kkx2zW89jq_NETu4u42CFZTMVD5Hwm6e (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7faba1f8cfd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "track.py", line 365, in <module>
+    main(opt)
+  File "track.py", line 360, in main
+    run(**vars(opt))
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "track.py", line 136, in run
+    tracker = create_tracker(tracking_method, tracking_config, reid_weights, device, half)
+  File "/home/ljh/v8_tracking/Organ-on-chips/yolov8_tracking/trackers/multi_tracker_zoo.py", line 10, in create_tracker
+    strongsort = StrongSORT(
+  File "/home/ljh/v8_tracking/Organ-on-chips/yolov8_tracking/trackers/strongsort/strong_sort.py", line 33, in __init__
+    self.model = ReIDDetectMultiBackend(weights=model_weights, device=device, fp16=fp16)
+  File "/home/ljh/v8_tracking/Organ-on-chips/yolov8_tracking/trackers/strongsort/reid_multibackend.py", line 60, in __init__
+    gdown.download(model_url, str(w), quiet=False)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/gdown/download.py", line 155, in download
+    res = sess.get(url, stream=True, verify=verify)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/requests/sessions.py", line 600, in get
+    return self.request("GET", url, **kwargs)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/data1/ljh/anaconda3/envs/py38_13/lib/python3.8/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='drive.google.com', port=443): Max retries exceeded with url: /uc?id=1Kkx2zW89jq_NETu4u42CFZTMVD5Hwm6e (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7faba1f8cfd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Sentry is attempting to send 2 pending error messages
+Waiting up to 2 seconds
+Press Ctrl-C to quit
